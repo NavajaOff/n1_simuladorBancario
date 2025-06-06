@@ -362,13 +362,14 @@ public class InterfazSimulador extends JFrame
     }
 
     /**
-     * M�todo para la extensi�n 2.
+     * M�todo para la extensi�n 2 - Mostrar resumen de transacciones
      */
     public void reqFuncOpcion2( )
     {
-        String respuesta = cuenta.metodo2( );
-        actualizar( );
-        JOptionPane.showMessageDialog( this, respuesta, "Respuesta.", JOptionPane.INFORMATION_MESSAGE );
+        String resumen = cuenta.generarResumenTransacciones();
+        JOptionPane.showMessageDialog(this, resumen, 
+            "Resumen de Transacciones - Mes Actual", 
+            JOptionPane.INFORMATION_MESSAGE);
     }
 
     // -----------------------------------------------------------------
