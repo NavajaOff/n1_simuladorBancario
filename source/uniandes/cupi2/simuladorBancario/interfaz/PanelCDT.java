@@ -153,11 +153,18 @@ public class PanelCDT extends JPanel implements ActionListener
 
     /**
      * Actualiza el saldo y el interés del CDT en la interfaz
+     * @param pSaldo El saldo formateado como String
+     * @param pInteres El interés como valor decimal (ejemplo: 0.06 para 6%)
      */
-    public void actualizarSaldoCDT( String pSaldo, double pInteres )
-    {
-        txtSaldoCdt.setText( pSaldo );
-        txtInteresCdt.setText( String.format( "%.2f", pInteres * 100 ) );
+    public void actualizarSaldoCDT(String pSaldo, double pInteres) {
+        // Extraer solo el valor numérico del saldo (eliminar el texto adicional)
+        String saldoLimpio = pSaldo;
+        if (pSaldo.contains("[")) {
+            saldoLimpio = pSaldo.substring(0, pSaldo.indexOf("[")).trim();
+        }
+        
+        txtSaldoCdt.setText(saldoLimpio);
+        txtInteresCdt.setText(String.format("%.2f", pInteres * 100));
     }
 
     /**

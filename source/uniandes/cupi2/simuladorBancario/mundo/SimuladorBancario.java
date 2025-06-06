@@ -231,7 +231,7 @@ public class SimuladorBancario
                 break;
         }
         
-        return String.format("Saldo promedio de %s: $%.2f", nombreCuenta, saldo);
+        return String.format("%s\nSaldo actual: $%.2f", nombreCuenta, saldo);
     }
 
     /**

@@ -145,9 +145,16 @@ public class InterfazSimulador extends JFrame
         panelSaldos.actualizarMes( cuenta.darMesActual( ) );
         panelSaldos.actualizarSaldoTotal( formatearValor( cuenta.calcularSaldoTotal( ) ) );
 
-        panelCorriente.actualizarSaldoCorriente( formatearValor( cuenta.darCuentaCorriente( ).darSaldo( ) ) );
-        panelAhorros.actualizarSaldoAhorros( formatearValor( cuenta.darCuentaAhorros( ).darSaldo( ) ) + "   [" + ( cuenta.darCuentaAhorros( ).darInteresMensual( ) * 100 ) + "%]" );
-        panelCDT.actualizarSaldoCDT( formatearValor( cuenta.darCDT( ).calcularValorPresente( cuenta.darMesActual( ) ) ) + "   [" + ( cuenta.darCDT( ).darInteresMensual( ) * 100 ) + "%]" );
+        panelCorriente.actualizarSaldoCorriente(formatearValor(cuenta.darCuentaCorriente().darSaldo()));
+        panelAhorros.actualizarSaldoAhorros(formatearValor(cuenta.darCuentaAhorros().darSaldo()) + 
+            "   [" + (cuenta.darCuentaAhorros().darInteresMensual() * 100) + "%]");
+        
+        // Modificar esta línea para separar el saldo y el interés
+        CDT cdt = cuenta.darCDT();
+        panelCDT.actualizarSaldoCDT(
+            formatearValor(cdt.calcularValorPresente(cuenta.darMesActual())),
+            cdt.darInteresMensual()
+        );
 
     }
 
