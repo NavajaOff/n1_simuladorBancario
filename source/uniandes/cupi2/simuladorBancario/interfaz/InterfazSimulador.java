@@ -90,7 +90,7 @@ public class InterfazSimulador extends JFrame
         setSize( 600, 580 );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
-        cuenta = new SimuladorBancario( "50.152.468", "Sergio López" );
+        cuenta = new SimuladorBancario( "1.073.813.055", "Jose Hernandez" );
 
         panelCDT = new PanelCDT( this );
         panelAhorros = new PanelAhorros( this );
