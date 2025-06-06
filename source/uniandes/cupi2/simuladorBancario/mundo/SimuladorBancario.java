@@ -249,4 +249,38 @@ public class SimuladorBancario
     {
         return "Respuesta 2";
     }
+
+    /**
+     * Genera un resumen de todas las transacciones del mes actual
+     * @return String con el resumen de transacciones
+     */
+    public String generarResumenTransacciones() {
+        StringBuilder resumen = new StringBuilder();
+        resumen.append("RESUMEN DE TRANSACCIONES - MES ").append(mesActual).append("\n\n");
+        
+        // Resumen Cuenta de Ahorros
+        resumen.append("CUENTA DE AHORROS\n");
+        resumen.append("Saldo actual: $").append(String.format("%.2f", ahorros.darSaldo())).append("\n");
+        resumen.append("Interés mensual: ").append(String.format("%.2f%%", ahorros.darInteresMensual() * 100)).append("\n\n");
+        
+        // Resumen Cuenta Corriente
+        resumen.append("CUENTA CORRIENTE\n");
+        resumen.append("Saldo actual: $").append(String.format("%.2f", corriente.darSaldo())).append("\n\n");
+        
+        // Resumen CDT
+        if (inversion != null) {
+            resumen.append("CDT\n");
+            resumen.append("Valor actual: $").append(String.format("%.2f", inversion.calcularValorPresente(mesActual))).append("\n");
+            resumen.append("Interés mensual: ").append(String.format("%.2f%%", inversion.darInteresMensual() * 100)).append("\n\n");
+        }
+        
+        // Saldo total
+        double saldoTotal = ahorros.darSaldo() + corriente.darSaldo();
+        if (inversion != null) {
+            saldoTotal += inversion.calcularValorPresente(mesActual);
+        }
+        resumen.append("SALDO TOTAL: $").append(String.format("%.2f", saldoTotal));
+        
+        return resumen.toString();
+    }
 }
