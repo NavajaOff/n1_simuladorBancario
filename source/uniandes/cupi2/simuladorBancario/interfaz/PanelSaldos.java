@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (Bogotï¿½ - Colombia)
+ * Departamento de Ingenierï¿½a de Sistemas y Computaciï¿½n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Panel con la información bancaria del cliente.
+ * Panel con la informaciï¿½n bancaria del cliente.
  */
 @SuppressWarnings("serial")
 public class PanelSaldos extends JPanel implements ActionListener
@@ -35,7 +35,7 @@ public class PanelSaldos extends JPanel implements ActionListener
     // -----------------------------------------------------------------
 
     /**
-     * Constante para avanzar un mes de la simulación.
+     * Constante para avanzar un mes de la simulaciï¿½n.
      */
     private final static String AVANZAR_MES = "AVANZAR MES";
 
@@ -44,7 +44,7 @@ public class PanelSaldos extends JPanel implements ActionListener
     // -----------------------------------------------------------------
 
     /**
-     * Ventana principal de la aplicación.
+     * Ventana principal de la aplicaciï¿½n.
      */
     private InterfazSimulador principal;
 
@@ -68,12 +68,12 @@ public class PanelSaldos extends JPanel implements ActionListener
     private JTextField txtSaldo;
 
     /**
-     * Campo para visualizar el mes actual de la simulación.
+     * Campo para visualizar el mes actual de la simulaciï¿½n.
      */
     private JTextField txtMes;
 
     /**
-     * Botón para avanzar de mes en la simulación.
+     * Botï¿½n para avanzar de mes en la simulaciï¿½n.
      */
     private JButton botonAvanzarMes;
 
@@ -83,7 +83,7 @@ public class PanelSaldos extends JPanel implements ActionListener
 
     /**
      * Crea el nuevo panel Central, e inicializa todos sus componentes. <br>
-     * <b>post: </b> Se inicializó el panel.
+     * <b>post: </b> Se inicializï¿½ el panel.
      * @param pPrincipal Ventana principal. pPrincipal != null.
      */
     public PanelSaldos( InterfazSimulador pPrincipal )
@@ -132,12 +132,12 @@ public class PanelSaldos extends JPanel implements ActionListener
     }
 
     // -----------------------------------------------------------------
-    // Métodos
+    // Mï¿½todos
     // -----------------------------------------------------------------
 
     /**
-     * Actualiza en la interfaz el mes actual de la simulación. <br>
-     * <b>post: </b> Se mostró el nuevo mes actual de la simulación.
+     * Actualiza en la interfaz el mes actual de la simulaciï¿½n. <br>
+     * <b>post: </b> Se mostrï¿½ el nuevo mes actual de la simulaciï¿½n.
      * @param pMes Mes actual. pMes > 0.
      */
     public void actualizarMes( int pMes )
@@ -147,7 +147,7 @@ public class PanelSaldos extends JPanel implements ActionListener
 
     /**
      * Actualiza el saldo total del cliente en la interfaz. <br>
-     * <b>post: </b> Se actualizó la información con el saldo actual.
+     * <b>post: </b> Se actualizï¿½ la informaciï¿½n con el saldo actual.
      * @param pSaldo Saldo total del cliente. pSaldo != null.
      */
     public void actualizarSaldoTotal( String pSaldo )
@@ -157,7 +157,7 @@ public class PanelSaldos extends JPanel implements ActionListener
 
     /**
      * Manejo de los eventos de los botones.
-     * @param pEvento Evento de click sobre un botón. pEvento != null.
+     * @param pEvento Evento de click sobre un botï¿½n. pEvento != null.
      */
     public void actionPerformed( ActionEvent pEvento )
     {
@@ -172,7 +172,7 @@ public class PanelSaldos extends JPanel implements ActionListener
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( this, "Información inválida: intente de nuevo..." );
+            JOptionPane.showMessageDialog( this, "Informacion invalida: intente de nuevo..." );
         }
     }
 

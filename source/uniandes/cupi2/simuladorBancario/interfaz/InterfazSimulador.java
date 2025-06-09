@@ -87,7 +87,7 @@ public class InterfazSimulador extends JFrame
     public InterfazSimulador( )
     {
         setTitle( "Simulador bancario" );
-        setSize( 600, 580 );
+        setSize( 600, 680 );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
         cuenta = new SimuladorBancario( "1.073.813.055", "Jose Hernandez" );
@@ -108,7 +108,7 @@ public class InterfazSimulador extends JFrame
         panelCentral.setLayout( new BorderLayout( ) );
         JPanel panelTransacciones = new JPanel( );
         panelTransacciones.setLayout( new GridLayout( 4, 1 ) );
-        panelTransacciones.setBorder( new CompoundBorder( new EmptyBorder( 0, 0, 5, 0 ), new TitledBorder( "Informaci�n Bancaria" ) ) );
+        panelTransacciones.setBorder( new CompoundBorder( new EmptyBorder( 0, 0, 5, 0 ), new TitledBorder( "Informacion Bancaria" ) ) );
 
         getContentPane( ).add( panelImagen, BorderLayout.NORTH );
         getContentPane( ).add( panelCentral, BorderLayout.CENTER );
@@ -184,14 +184,14 @@ public class InterfazSimulador extends JFrame
             }
             catch( Exception e )
             {
-                JOptionPane.showMessageDialog( this, "Se ingres� un monto de dinero o inter�s inv�lido.", "Invertir en CDT", JOptionPane.ERROR_MESSAGE );
+                JOptionPane.showMessageDialog( this, "Se ingreso un monto de dinero o interes invalido.", "Invertir en CDT", JOptionPane.ERROR_MESSAGE );
             }
         }
     }
 
     /**
      * Cierra el CDT del cliente. <br>
-     * <b>post: </b> Se cerr� el CDT del cliente.
+     * <b>post: </b> Se cerro el CDT del cliente.
      */
     public void cerrarCDT( )
     {
@@ -201,7 +201,7 @@ public class InterfazSimulador extends JFrame
 
     /**
      * Retira un monto de dinero de la cuenta de ahorros del cliente. <br>
-     * <b>post: </b> Se retir� un monto de dinero de la cuenta de ahorros del cliente.
+     * <b>post: </b> Se retiro un monto de dinero de la cuenta de ahorros del cliente.
      * @param pMonto Monto de dinero a retirar de la cuenta de ahorros del cliente.
      */
     public void retirarAhorros( String pMonto )
@@ -226,14 +226,14 @@ public class InterfazSimulador extends JFrame
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( this, "Se ingres� un monto de dinero inv�lido.", "Retirar", JOptionPane.ERROR_MESSAGE );
+            JOptionPane.showMessageDialog( this, "Se ingreso un monto de dinero invalido.", "Retirar", JOptionPane.ERROR_MESSAGE );
 
         }
     }
 
     /**
      * Consigna un monto de dinero en la cuenta de ahorros del cliente. <br>
-     * <b>post: </b> Se consign� el monto de dinero a la cuenta de ahorros del cliente.
+     * <b>post: </b> Se consigno el monto de dinero a la cuenta de ahorros del cliente.
      * @param pMonto Monto de dinero a consignar en la cuenta de ahorros del cliente.
      */
     public void consignarAhorros( String pMonto )
@@ -254,14 +254,14 @@ public class InterfazSimulador extends JFrame
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( this, "Se ingres� un monto de dinero inv�lido.", "Consignar", JOptionPane.ERROR_MESSAGE );
+            JOptionPane.showMessageDialog( this, "Se ingreso un monto de dinero invalido.", "Consignar", JOptionPane.ERROR_MESSAGE );
 
         }
     }
 
     /**
      * Retira un monto de dinero de la cuenta corriente. <br>
-     * <b>post: </b> Se retir� de la cuenta corriente del cliente el monto especificado.
+     * <b>post: </b> Se retiro de la cuenta corriente del cliente el monto especificado.
      * @param pMonto Monto de dinero a retirar de la cuenta corriente.
      */
     public void retirarCorriente( String pMonto )
@@ -286,13 +286,13 @@ public class InterfazSimulador extends JFrame
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( this, "Se ingres� un monto de dinero inv�lido.", "Retirar", JOptionPane.ERROR_MESSAGE );
+            JOptionPane.showMessageDialog( this, "Se ingreso un monto de dinero invalido.", "Retirar", JOptionPane.ERROR_MESSAGE );
         }
     }
 
     /**
      * Consigna un monto de dinero en la cuenta corriente. <br>
-     * <b>post: </b> Se consign� el monto especificado en la cuenta corriente del cliente.
+     * <b>post: </b> Se consigno el monto especificado en la cuenta corriente del cliente.
      * @param pMonto Monto de dinero a consignar de la cuenta corriente.
      */
     public void consignarCorriente( String pMonto )
@@ -312,7 +312,7 @@ public class InterfazSimulador extends JFrame
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( this, "Se ingres� un monto de dinero inv�lido.", "Consignar", JOptionPane.ERROR_MESSAGE );
+            JOptionPane.showMessageDialog( this, "Se ingreso un monto de dinero invalido.", "Consignar", JOptionPane.ERROR_MESSAGE );
 
         }
     }
@@ -362,9 +362,35 @@ public class InterfazSimulador extends JFrame
         );
         
         if (seleccion != -1) {
-            String respuesta = cuenta.calcularSaldoPromedio(seleccion + 1);
-            JOptionPane.showMessageDialog(this, respuesta, "Saldo Promedio", 
-                JOptionPane.INFORMATION_MESSAGE);
+            try {
+                String mesInicioStr = JOptionPane.showInputDialog(
+                    this,
+                    "Ingrese el mes inicial del periodo:",
+                    "Mes Inicial",
+                    JOptionPane.QUESTION_MESSAGE
+                );
+                
+                String mesFinStr = JOptionPane.showInputDialog(
+                    this,
+                    "Ingrese el mes final del periodo:",
+                    "Mes Final",
+                    JOptionPane.QUESTION_MESSAGE
+                );
+                
+                if (mesInicioStr != null && mesFinStr != null) {
+                    int mesInicio = Integer.parseInt(mesInicioStr);
+                    int mesFin = Integer.parseInt(mesFinStr);
+                    
+                    String respuesta = cuenta.calcularSaldoPromedio(seleccion + 1, mesInicio, mesFin);
+                    JOptionPane.showMessageDialog(this, respuesta, "Saldo Promedio", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, 
+                    "Por favor ingrese valores numericos validos para los meses",
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

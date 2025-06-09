@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (Bogotï¿½ - Colombia)
+ * Departamento de Ingenierï¿½a de Sistemas y Computaciï¿½n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -25,7 +25,7 @@ public class CDT
     private double valorInvertido;
 
     /**
-     * Interés mensual que del CDT
+     * Interï¿½s mensual que del CDT
      */
     private double interesMensual;
 
@@ -35,12 +35,12 @@ public class CDT
     private int mesApertura;
 
     // -----------------------------------------------------------------
-    // Métodos
+    // Mï¿½todos
     // -----------------------------------------------------------------
 
     /**
      * Inicializa el CDT. <br>
-     * <b>post: </b> El valor invertido, el interés mensual y la fecha se inicializaron en 0.
+     * <b>post: </b> El valor invertido, el interï¿½s mensual y la fecha se inicializaron en 0.
      */
     public CDT( )
     {
@@ -50,8 +50,8 @@ public class CDT
     }
 
     /**
-     * Retorna el interés que paga el banco mensualmente por este CDT.
-     * @return Interés mensual del CDT.
+     * Retorna el interï¿½s que paga el banco mensualmente por este CDT.
+     * @return Interï¿½s mensual del CDT.
      */
     public double darInteresMensual( )
     {
@@ -59,10 +59,10 @@ public class CDT
     }
 
     /**
-     * Inicia una inversión en un CDT .<br>
+     * Inicia una inversiï¿½n en un CDT .<br>
      * <b>post: </b> Se cambian los valores del CDT, con los valores recibidos. <br>
      * @param pMontoInvertido Monto de dinero que se va a invertir en el CDT. pMontoInvertido > 0.
-     * @param pInteresMensual Interés mensual que va a ganar el CDT. pInteresMensual > 0.
+     * @param pInteresMensual Interï¿½s mensual que va a ganar el CDT. pInteresMensual > 0.
      * @param pMes Mes de apertura del CDT. pMes > 0.
      */
     public void invertir( double pMontoInvertido, double pInteresMensual, int pMes )
@@ -73,7 +73,7 @@ public class CDT
     }
 
     /**
-     * Calcula el valor presente de la inversión teniendo en cuenta el interés de la cuenta. <br>
+     * Calcula el valor presente de la inversiï¿½n teniendo en cuenta el interï¿½s de la cuenta. <br>
      * @param pMesActual Mes actual del simulador. pMesActual > 0.
      * @return Valor presente del dinero invertido en CDT.
      */
@@ -84,8 +84,8 @@ public class CDT
     }
 
     /**
-     * Cierra el CDT y retorna el valor invertido más los intereses. <br>
-     * <b>post: </b> Se retornó el rendimiento del CDT, y se reinició sus atributos a 0.
+     * Cierra el CDT y retorna el valor invertido mï¿½s los intereses. <br>
+     * <b>post: </b> Se retornï¿½ el rendimiento del CDT, y se reiniciï¿½ sus atributos a 0.
      * @param pMesActual Mes de cierre para calcular el rendimiento del CDT.
      * @return Valor de cierre del CDT.
      */
@@ -96,5 +96,16 @@ public class CDT
         interesMensual = 0;
         mesApertura = 0;
         return valorCierre;
+    }
+
+    public double calcularValorPromedio(int pMesInicio, int pMesFin) {
+        double sumaValores = 0;
+        int mesesCalculados = pMesFin - pMesInicio + 1;
+        
+        for (int mes = pMesInicio; mes <= pMesFin; mes++) {
+            sumaValores += calcularValorPresente(mes);
+        }
+        
+        return sumaValores / mesesCalculados;
     }
 }

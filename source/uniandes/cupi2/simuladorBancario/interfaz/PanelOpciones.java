@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (Bogotï¿½ - Colombia)
+ * Departamento de Ingenierï¿½a de Sistemas y Computaciï¿½n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 /**
- * Panel con las opciones de la aplicación.
+ * Panel con las opciones de la aplicaciï¿½n.
  */
 @SuppressWarnings("serial")
 public class PanelOpciones extends JPanel implements ActionListener
@@ -33,12 +33,12 @@ public class PanelOpciones extends JPanel implements ActionListener
     // -----------------------------------------------------------------
 
     /**
-     * Constante para la extensión 1.
+     * Constante para la extensiï¿½n 1.
      */
     private final static String OPCION_1 = "OPCION_1";
 
     /**
-     * Constante para la extensión 2.
+     * Constante para la extensiï¿½n 2.
      */
     private final static String OPCION_2 = "OPCION_2";
 
@@ -56,12 +56,12 @@ public class PanelOpciones extends JPanel implements ActionListener
     // -----------------------------------------------------------------
 
     /**
-     * Botón para hacer la extensión 1.
+     * Botï¿½n para hacer la extensiï¿½n 1.
      */
     private JButton opcion1;
 
     /**
-     * Botón para hacer la extensión 2.
+     * Botï¿½n para hacer la extensiï¿½n 2.
      */
     private JButton opcion2;
 
@@ -71,8 +71,8 @@ public class PanelOpciones extends JPanel implements ActionListener
 
     /**
      * Crea un nuevo panel e inicializa sus elementos. <br>
-     * <b>post: </b> Se inicializó el panel.
-     * @param pPrincipal Ventana principal de la aplicación. pPrincipal != null.
+     * <b>post: </b> Se inicializï¿½ el panel.
+     * @param pPrincipal Ventana principal de la aplicaciï¿½n. pPrincipal != null.
      */
     public PanelOpciones( InterfazSimulador pPrincipal )
     {
@@ -80,12 +80,12 @@ public class PanelOpciones extends JPanel implements ActionListener
         // Inicializa los elementos del panel
         principal = pPrincipal;
         opcion1 = new JButton( );
-        opcion1.setText( "Opción 1" );
+        opcion1.setText( "Opcion 1" );
         opcion1.setActionCommand( OPCION_1 );
         opcion1.addActionListener( this );
 
         opcion2 = new JButton( );
-        opcion2.setText( "Opción 2" );
+        opcion2.setText( "Opcion 2" );
         opcion2.setActionCommand( OPCION_2 );
         opcion2.addActionListener( this );
 
@@ -102,7 +102,7 @@ public class PanelOpciones extends JPanel implements ActionListener
 
     /**
      * Manejo de los eventos de los botones.
-     * @param pEvento Evento de click sobre un botón. pEvento != null.
+     * @param pEvento Evento de click sobre un botï¿½n. pEvento != null.
      */
     public void actionPerformed( ActionEvent pEvento )
     {
@@ -120,7 +120,7 @@ public class PanelOpciones extends JPanel implements ActionListener
         }
         catch( Exception e )
         {
-            JOptionPane.showMessageDialog( principal, "Información inválida: intente de nuevo..." );
+            JOptionPane.showMessageDialog( principal, "Informacion invalida: intente de nuevo..." );
         }
     
 

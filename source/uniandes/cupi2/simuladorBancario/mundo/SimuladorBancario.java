@@ -234,6 +234,34 @@ public class SimuladorBancario
         return String.format("%s\nSaldo actual: $%.2f", nombreCuenta, saldo);
     }
 
+    public String calcularSaldoPromedio(int tipoCuenta, int mesInicio, int mesFin) {
+        if (mesInicio > mesFin || mesInicio < 1 || mesFin > mesActual) {
+            return "Período inválido";
+        }
+
+        double saldoPromedio = 0;
+        String nombreCuenta = "";
+        int mesesTranscurridos = mesFin - mesInicio + 1;
+        
+        switch(tipoCuenta) {
+            case 1: // Cuenta de Ahorros
+                saldoPromedio = ahorros.calcularSaldoPromedio(mesInicio, mesFin);
+                nombreCuenta = "Cuenta de Ahorros";
+                break;
+            case 2: // Cuenta Corriente
+                saldoPromedio = corriente.darSaldo() / mesesTranscurridos;
+                nombreCuenta = "Cuenta Corriente";
+                break;
+            case 3: // CDT
+                saldoPromedio = inversion.calcularValorPromedio(mesInicio, mesFin);
+                nombreCuenta = "CDT";
+                break;
+        }
+        
+        return String.format("%s\nPeríodo: Mes %d - Mes %d\nSaldo promedio: $%.2f", 
+                            nombreCuenta, mesInicio, mesFin, saldoPromedio);
+    }
+
     /**
      * Método para la extensión 1
      */

@@ -176,10 +176,10 @@ public class PanelCDT extends JPanel implements ActionListener
         String command = pEvento.getActionCommand( );
         if( command.equals( ABRIR_CDT ) )
         {
-            String strValor = JOptionPane.showInputDialog( principal, "Introduzca el monto de dinero de la inversi�n", "Abrir CDT", JOptionPane.QUESTION_MESSAGE );
+            String strValor = JOptionPane.showInputDialog( principal, "Introduzca el monto de dinero de la inversion", "Abrir CDT", JOptionPane.QUESTION_MESSAGE );
             if( strValor != null )
             {
-                String strInteres = JOptionPane.showInputDialog( principal, "Introduzca el inter�s mensual en porcentaje", "Abrir CDT", JOptionPane.QUESTION_MESSAGE );
+                String strInteres = JOptionPane.showInputDialog( principal, "Introduzca el interes mensual en porcentaje", "Abrir CDT", JOptionPane.QUESTION_MESSAGE );
                 if( strInteres != null )
                 {
                     principal.invertirCDT( strValor, strInteres );
