@@ -236,7 +236,7 @@ public class SimuladorBancario
 
     public String calcularSaldoPromedio(int tipoCuenta, int mesInicio, int mesFin) {
         if (mesInicio > mesFin || mesInicio < 1 || mesFin > mesActual) {
-            return "Período inválido";
+            return "Error: Periodo invalido";
         }
 
         double saldoPromedio = 0;
@@ -244,22 +244,36 @@ public class SimuladorBancario
         int mesesTranscurridos = mesFin - mesInicio + 1;
         
         switch(tipoCuenta) {
-            case 1: // Cuenta de Ahorros
-                saldoPromedio = ahorros.calcularSaldoPromedio(mesInicio, mesFin);
+            case 1:
+                double saldoAhorros = ahorros.darSaldo();
+                double interesMensual = ahorros.darInteresMensual();
+                saldoPromedio = saldoAhorros * (1 + interesMensual * mesesTranscurridos);
                 nombreCuenta = "Cuenta de Ahorros";
                 break;
-            case 2: // Cuenta Corriente
-                saldoPromedio = corriente.darSaldo() / mesesTranscurridos;
+                
+            case 2:
+                saldoPromedio = corriente.darSaldo();
                 nombreCuenta = "Cuenta Corriente";
                 break;
-            case 3: // CDT
-                saldoPromedio = inversion.calcularValorPromedio(mesInicio, mesFin);
-                nombreCuenta = "CDT";
+                
+            case 3:
+                if (inversion != null) {
+                    saldoPromedio = inversion.calcularValorPromedio(mesInicio, mesFin);
+                    nombreCuenta = "CDT";
+                } else {
+                    return "Error: No hay un CDT activo";
+                }
                 break;
         }
         
-        return String.format("%s\nPeríodo: Mes %d - Mes %d\nSaldo promedio: $%.2f", 
-                            nombreCuenta, mesInicio, mesFin, saldoPromedio);
+        StringBuilder resultado = new StringBuilder();
+        resultado.append("Resultados del calculo:\n\n");
+        resultado.append("Cuenta: ").append(nombreCuenta).append("\n");
+        resultado.append("Periodo: Mes ").append(mesInicio).append(" - Mes ").append(mesFin).append("\n");
+        resultado.append("Numero de meses: ").append(mesesTranscurridos).append("\n");
+        resultado.append(String.format("Saldo promedio: $%,.2f", saldoPromedio));
+        
+        return resultado.toString();
     }
 
     /**
@@ -289,7 +303,7 @@ public class SimuladorBancario
         // Resumen Cuenta de Ahorros
         resumen.append("CUENTA DE AHORROS\n");
         resumen.append("Saldo actual: $").append(String.format("%.2f", ahorros.darSaldo())).append("\n");
-        resumen.append("Interés mensual: ").append(String.format("%.2f%%", ahorros.darInteresMensual() * 100)).append("\n\n");
+        resumen.append("Interes mensual: ").append(String.format("%.2f%%", ahorros.darInteresMensual() * 100)).append("\n\n");
         
         // Resumen Cuenta Corriente
         resumen.append("CUENTA CORRIENTE\n");
@@ -299,7 +313,7 @@ public class SimuladorBancario
         if (inversion != null) {
             resumen.append("CDT\n");
             resumen.append("Valor actual: $").append(String.format("%.2f", inversion.calcularValorPresente(mesActual))).append("\n");
-            resumen.append("Interés mensual: ").append(String.format("%.2f%%", inversion.darInteresMensual() * 100)).append("\n\n");
+            resumen.append("Interes mensual: ").append(String.format("%.2f%%", inversion.darInteresMensual() * 100)).append("\n\n");
         }
         
         // Saldo total

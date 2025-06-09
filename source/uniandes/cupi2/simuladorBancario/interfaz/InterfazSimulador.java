@@ -372,7 +372,7 @@ public class InterfazSimulador extends JFrame
                 
                 String mesFinStr = JOptionPane.showInputDialog(
                     this,
-                    "Ingrese el mes final del periodo:",
+                    "Ingrese el mes final del período:",
                     "Mes Final",
                     JOptionPane.QUESTION_MESSAGE
                 );
@@ -381,15 +381,27 @@ public class InterfazSimulador extends JFrame
                     int mesInicio = Integer.parseInt(mesInicioStr);
                     int mesFin = Integer.parseInt(mesFinStr);
                     
-                    String respuesta = cuenta.calcularSaldoPromedio(seleccion + 1, mesInicio, mesFin);
-                    JOptionPane.showMessageDialog(this, respuesta, "Saldo Promedio", 
-                        JOptionPane.INFORMATION_MESSAGE);
+                    String resultado = cuenta.calcularSaldoPromedio(seleccion + 1, mesInicio, mesFin);
+                    
+                    JTextArea textArea = new JTextArea(resultado);
+                    textArea.setEditable(false);
+                    JScrollPane scrollPane = new JScrollPane(textArea);
+                    scrollPane.setPreferredSize(new Dimension(400, 200));
+                    
+                    JOptionPane.showMessageDialog(
+                        this,
+                        scrollPane,
+                        "Resultado del Calculo",
+                        JOptionPane.INFORMATION_MESSAGE
+                    );
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, 
+                JOptionPane.showMessageDialog(
+                    this,
                     "Por favor ingrese valores numericos validos para los meses",
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
             }
         }
     }
